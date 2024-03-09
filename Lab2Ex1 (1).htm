@@ -40,10 +40,41 @@
         graphics.clearRect(0,0,600,600);
         
         // TODO: insert code to draw the image for Exercise 1!
-        graphics.fillRect(100,100,200,100);
-        graphics.strokeRect(100,100,300,200);
-        graphics.fillText("hello",50,50);
-        graphics.fillOval()
+        //body
+        graphics.fillStyle = "yellow"; 
+        graphics.bazierCurveTo(320,600,585,75,240,40);
+        graphics.fill();
+        graphics.bazierCurveTo(210,390,380,115,240,40);
+        graphics.fillStyle = "white";
+        graphics.fill();
+        //eyes
+        graphics.fillStyle = "white";
+        graphics.fillCircle(300,200,9);
+        graphics.fillCircle(375,210,9);
+        
+        graphics.fillStyle = "black";
+        graphics.fillCircle(300,200,4);
+        graphics.fillCircle(375,210,4);
+
+        //mouth
+        
+        graphics.moveTo(260,255);
+        graphics.bezierCurveTo(270,315,325,305,350,275);
+        graphics.bezierCurveTo(330,280,275,275,260,255);
+        graphics.fillStyle = "black";
+        graphics.fill();
+        graphics.strokeLine(265,250,255,260);
+        graphics.strokeLine(350,285,350,270);
+
+        //teeth
+
+        graphics.fillStyle = "white";
+        graphics.fillRect(305,276,10,10);
+        graphics.fillRect(294,275,10,10);
+        graphics.fill();
+
+
+    
         
     } // end of draw()
     
@@ -166,6 +197,13 @@
         graphics.getRGB = function(x,y) {
             var color = this.getImageData(x,y,1,1);
             return color.data;
+        }
+        graphics.bazierCurveTo=function(cx1,cx2,c2x,c2y,x,y)
+        {
+            this.beginPath();
+            this.moveTo(55,300);
+            this.bezierCurveTo(cx1,cx2,c2x,c2y,x,y);
+            this.stroke();  
         }
     }    // end of addGraphicsContextExtras()
     
